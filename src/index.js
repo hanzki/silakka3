@@ -1,9 +1,7 @@
-import { magenta, cyan } from 'chalk'
-import { capitalize } from 'lodash'
-
-import env from './config' // configure environment
-
-import logger from './logger'
+import { cyan, magenta } from 'chalk'
+import { mode } from '~/src/config' // configure environment
+import start from '~/src/core'
+import logger from '~/src/logger'
 
 logger.info(
   magenta(() => {
@@ -33,6 +31,6 @@ logger.info(
   })
 )
 
-logger.info(`Started in ${env.NODE_ENV} mode`)
+logger.info(`Starting in ${mode} mode`)
 
-export default who => `Hello ${capitalize(who)}!`
+start()
