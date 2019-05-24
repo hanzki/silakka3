@@ -1,3 +1,8 @@
+/**
+ * Jest test configuration
+ *
+ * @see https://jestjs.io/
+ */
 module.exports = {
   clearMocks: true,
   coverageDirectory: 'coverage',

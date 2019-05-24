@@ -1,12 +1,16 @@
+/**
+ * ESLint config
+ *
+ * @see https://eslint.org/
+ */
 module.exports = {
-  parser: "babel-eslint",
+  parser: 'babel-eslint',
   extends: 'standard',
   env: {
-    jest : true,
+    jest: true,
     node: true
   },
   rules: {
-    'no-console': 'warn',
-    'no-unused-vars': 'warn'
+    'no-console': 'warn'
   }
-};
+}

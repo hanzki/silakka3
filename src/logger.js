@@ -1,6 +1,7 @@
 import { createLogger, format as formatLog, transports } from 'winston'
 import moment from 'moment'
 import { cyan } from 'chalk'
+import { logLevel } from '~/src/config'
 
 const { combine, timestamp, printf, colorize } = formatLog
 
@@ -11,8 +12,13 @@ const format = printf(
     `[${cyan(formatTime(timestamp))}] ${level}: ${message}`
 )
 
+/**
+ * Application wide logger instance
+ *
+ * @see https://github.com/winstonjs/winston
+ */
 export default createLogger({
-  level: 'info',
+  level: logLevel,
   format: combine(timestamp(), colorize(), format),
   defaultMeta: { service: 'silakka' },
   transports: [new transports.Console()]
