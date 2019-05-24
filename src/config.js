@@ -1,15 +1,16 @@
 import { config } from 'dotenv'
 
-const mode = process.env.NODE_ENV || 'development'
+const MODE = process.env.NODE_ENV || 'development'
 
-const isProduction = mode === 'production'
+const isProduction = MODE === 'production'
 
+// reads env variables from .env file in project root
 !isProduction && config()
 
-const logLevel =
+const LOG_LEVEL =
   process.env.LOG_LEVEL ||
-  { production: 'info', development: 'debug', test: 'none' }[mode]
+  { production: 'info', development: 'debug', test: 'none' }[MODE]
 
-const apiToken = process.env.TELEGRAM_API_TOKEN
+const API_TOKEN = process.env.TELEGRAM_API_TOKEN
 
-export { mode, isProduction, logLevel, apiToken }
+export { MODE, API_TOKEN, LOG_LEVEL }

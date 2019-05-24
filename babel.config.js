@@ -10,6 +10,7 @@ module.exports = function (api) {
   const plugins = [
     '@babel/transform-runtime',
     '@babel/proposal-object-rest-spread',
+    '@babel/proposal-optional-chaining',
     'babel-plugin-root-import'
   ]
 
