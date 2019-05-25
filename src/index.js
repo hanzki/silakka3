@@ -1,5 +1,5 @@
 import { cyan, magenta } from 'chalk'
-import { mode } from '~/src/config' // configure environment
+import { MODE } from '~/src/config' // configure environment
 import start from '~/src/core'
 import logger from '~/src/logger'
 
@@ -31,6 +31,6 @@ logger.info(
   })
 )
 
-logger.info(`Starting in ${mode} mode`)
+logger.info(`Starting in ${MODE} mode`)
 
 start()

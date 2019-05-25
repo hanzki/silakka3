@@ -1,5 +1,5 @@
 import TelegramBot from 'node-telegram-bot-api'
-import { apiToken } from '~/src/config'
+import { API_TOKEN } from '~/src/config'
 import logger from '~/src/logger'
 import modules from '~/src/modules'
 
@@ -22,7 +22,7 @@ import modules from '~/src/modules'
  *
  * @returns {Bot}
  */
-export default (config = { polling: true }, token = apiToken) => {
+export default (config = { polling: true }, token = API_TOKEN) => {
   const bot = new TelegramBot(token, config)
 
   bot.on('polling_error', error => {
