@@ -12,7 +12,17 @@
 TELEGRAM_API_TOKEN=<your-api-token-here>
 ```
 
-3. Run
+3. Install dependencies
+
+```
+yarn
+
+// or
+
+npm install
+```
+
+4. Start the bot
 
 ```
 yarn start:watch
@@ -22,10 +32,48 @@ yarn start:watch
 npm run start:watch
 ```
 
-4. Message your bot
+5. Message your bot
 
 ```
 /echo I'm the bestest bot!
+```
+
+### Adding a new module
+
+1. Create new JS file 'myModule.js' under src/modules
+
+```javascript
+import logger from "~/src/logger";
+
+export default bot => {
+  bot.onText(/\/myCommand (.+)/, (msg, match) => {
+    const { chat } = msg;
+    const [, resp] = match;
+
+    logger.debug(`MyModule message received: "${resp}"`);
+    bot.sendMessage(chat.id, "Bot response from MyModule");
+  });
+
+  logger.info(`MyModule module added`);
+};
+```
+
+2. Import and add the module in module list of src/modules/index.js
+
+```javascript
+import echo from "~/src/modules/echo";
+import myModule from "~/src/modules/myModule";
+
+// add module initializers here
+const modules = [echo, myModule];
+```
+
+3. Restart the bot if not running in watch mode (start:watch will automatically reload upon save)
+
+4. Test the module!
+
+```
+/myCommand My new amazing module!
 ```
 
 ## Planning
