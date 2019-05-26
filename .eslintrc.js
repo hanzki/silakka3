@@ -11,6 +11,7 @@ module.exports = {
     node: true
   },
   rules: {
-    'no-console': 'warn'
+    'no-console': 'warn',
+    camelcase: 0
   }
 }

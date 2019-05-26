@@ -181,3 +181,5 @@ export default bot => {
 
   logger.info(`Magic module added`)
 }
+
+export { MODULE_ID }
