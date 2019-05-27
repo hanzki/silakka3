@@ -35,6 +35,14 @@ describe('e2e', () => {
     expect(message.text).toEqual(string)
   })
 
+  it('calc', async () => {
+    await client.sendMessage(client.makeMessage(`/calc 1+1`))
+
+    const { result } = await client.getUpdates()
+    const [{ message }] = result
+    expect(message.text).toEqual('2')
+  })
+
   afterAll(async () => {
     await server.stop()
     bot.stopPolling()
