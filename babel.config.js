@@ -11,6 +11,7 @@ module.exports = function (api) {
     '@babel/transform-runtime',
     '@babel/proposal-object-rest-spread',
     '@babel/proposal-optional-chaining',
+    '@babel/proposal-class-properties',
     'babel-plugin-root-import'
   ]
 
