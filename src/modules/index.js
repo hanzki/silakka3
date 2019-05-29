@@ -1,8 +1,9 @@
 import echo from '~/src/modules/echo'
 import magic from '~/src/modules/magic'
+import tube from '~/src/modules/tube'
 
 // add module initializers here
-const modules = [echo, magic]
+const modules = [echo, magic, tube]
 
 /**
  * Initializes each module by passing the bot
