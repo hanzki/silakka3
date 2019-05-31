@@ -35,20 +35,23 @@ export default bot => {
   logger.info(`Tube module added`)
 }
 
-const getRaw = async (videoQuery) => {
+const getRaw = async videoQuery => {
   try {
-    return await get('http://www.youtube.com/results', { search_query: videoQuery })
+    return await get('http://www.youtube.com/results', {
+      search_query: videoQuery
+    })
   } catch (error) {
     logger.error(error)
   }
 }
 
-const queryVideos = async (videoQuery) => {
+const queryVideos = async videoQuery => {
   const results = await getRaw(videoQuery)
 
   if (results.data) {
-    const regExp = /href=\"\/watch\?v=(.{11})/
-    const parsed = 'http://www.youtube.com/watch?v=' + regExp.exec(results.data)[1]
+    const regExp = /href="\/watch\?v=(.{11})/
+    const parsed =
+      'http://www.youtube.com/watch?v=' + regExp.exec(results.data)[1]
     return parsed
   } else {
     logger.error('Youtube search returned no data')
