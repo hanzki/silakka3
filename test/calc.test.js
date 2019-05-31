@@ -44,7 +44,7 @@ describe('echo module', () => {
     expect(bot.sendMessage).toHaveBeenCalledTimes(1)
     expect(bot.sendMessage).toHaveBeenLastCalledWith(
       chatId,
-      "You stupid! I can't do that!"
+      "You crazy! I can't do that!"
     )
   })
 })
