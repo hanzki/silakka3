@@ -36,7 +36,7 @@ jobs:
       # run tests!
       - run: yarn test
 
-      - run: 7z a /tmp/dist.zip .
+      - run: zip -r /tmp/dist.zip .
 
       - persist_to_workspace:
           root: /tmp
