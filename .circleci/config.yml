@@ -56,9 +56,12 @@ jobs:
       - attach_workspace:
           at: /tmp
 
-      - run: scp /tmp/dist.zip hanzki@hilla.kapsi.fi:dist.zip
-
-      - run: ssh hanzki@hilla.kapsi.fi './install-silakka.sh'
+      - run:
+          name: Deploy Silakka
+          command: |
+            echo 'hilla.kapsi.fi,91.232.154.72 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRZaHmaBOnqK/JqEwdPb6tRd9HZcNDiYFTU2EdO6qtvFtlLea7i6iDscbq8NnquQSsBkbNka6HuSmWuzzrExMrs8UvEBUzPWNCPKylWbclVUMAB7wHyRXx0VIx++RISpeZ7ueBrBN0hKrhOwnJxFhvVvb4m30o3yZsovd3oYsG9BFC2Fu8HGTgWse2vlUoqldkKJOleS+FvUVF9iuKIP+yhzIS8TV9qTWplv4MyWMBXZnq6cwy8FM72XpiQSVq6URaYMU6cLadBie9Ozi8buc4z2YmarR4ZKog+04U7Tz4ndiesI59bz9uFIdmcUKFSVBPlA4ygxAMo5agZOgNydm5' >> ~/.ssh/known_hosts
+            scp /tmp/dist.zip hanzki@hilla.kapsi.fi:dist.zip
+            ssh hanzki@hilla.kapsi.fi './install-silakka.sh'
 
 workflows:
   version: 2
