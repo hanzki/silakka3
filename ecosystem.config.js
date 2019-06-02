@@ -21,7 +21,7 @@ module.exports = {
     production: {
       user: 'hanzki',
       host: 'hilla.kapsi.fi',
-      ref: 'hanzki/master',
+      ref: 'origin/master',
       repo: 'https://github.com/hanzki/silakka3.git',
       path: '/home/users/hanzki/pm2/silakka',
       'post-deploy': 'yarn install && pm2 reload ecosystem.config.js --env production'
