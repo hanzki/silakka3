@@ -36,32 +36,25 @@ jobs:
       # run tests!
       - run: yarn test
 
-      - run: zip -r /tmp/dist.zip .
-
-      - persist_to_workspace:
-          root: /tmp
-          paths:
-            - dist.zip
-
 
   deploy-prod:
     docker:
       - image: circleci/node
 
     steps:
+      - checkout
+
       - add_ssh_keys:
           fingerprints:
             - "80:a1:64:1b:61:f9:7a:e8:70:09:ab:57:a0:d9:f4:68"
 
-      - attach_workspace:
-          at: /tmp
+      - run: yarn global add pm2
 
       - run:
           name: Deploy Silakka
           command: |
             echo 'hilla.kapsi.fi,91.232.154.72 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRZaHmaBOnqK/JqEwdPb6tRd9HZcNDiYFTU2EdO6qtvFtlLea7i6iDscbq8NnquQSsBkbNka6HuSmWuzzrExMrs8UvEBUzPWNCPKylWbclVUMAB7wHyRXx0VIx++RISpeZ7ueBrBN0hKrhOwnJxFhvVvb4m30o3yZsovd3oYsG9BFC2Fu8HGTgWse2vlUoqldkKJOleS+FvUVF9iuKIP+yhzIS8TV9qTWplv4MyWMBXZnq6cwy8FM72XpiQSVq6URaYMU6cLadBie9Ozi8buc4z2YmarR4ZKog+04U7Tz4ndiesI59bz9uFIdmcUKFSVBPlA4ygxAMo5agZOgNydm5' >> ~/.ssh/known_hosts
-            scp /tmp/dist.zip hanzki@hilla.kapsi.fi:dist.zip
-            ssh hanzki@hilla.kapsi.fi './install-silakka.sh'
+            pm2 deploy production
 
 workflows:
   version: 2

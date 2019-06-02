@@ -38,7 +38,7 @@ const onCommand = bot =>
       logger.debug(`Calc expression received: "${expr}"`)
       return bot.sendMessage(chat.id, evaluate(expr))
     } catch (err) {
-      bot.sendMessage(chat.id, "You stupid! I can't do that!")
+      bot.sendMessage(chat.id, "You crazy! I can't do that!")
     }
   })
 
